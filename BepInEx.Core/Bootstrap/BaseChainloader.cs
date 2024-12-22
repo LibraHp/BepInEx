@@ -156,7 +156,8 @@ public abstract class BaseChainloader<TPlugin>
             Directory.CreateDirectory(Paths.PatcherPluginPath);
 
         _initialized = true;
-
+        Console.OutputEncoding = Encoding.UTF8;
+        Console.InputEncoding = Encoding.UTF8;
         Logger.Log(LogLevel.Message, "Chainloader initialized");
         Logger.Log(LogLevel.Message, "                         -                        ");
         Logger.Log(LogLevel.Message, "                **+-    .#.  .    :=:             ");
@@ -183,6 +184,7 @@ public abstract class BaseChainloader<TPlugin>
         Logger.Log(LogLevel.Message, "                     .:+=:.                       ");
         Logger.Log(LogLevel.Message, "                     :+=.                         ");
         Logger.Log(LogLevel.Message, "                     .:.                          ");
+        Logger.Log(LogLevel.Message, "Mod 前置注入成功！");
     }
 
     protected virtual void InitializeLoggers()
