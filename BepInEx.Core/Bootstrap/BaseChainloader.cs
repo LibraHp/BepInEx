@@ -158,6 +158,31 @@ public abstract class BaseChainloader<TPlugin>
         _initialized = true;
 
         Logger.Log(LogLevel.Message, "Chainloader initialized");
+        Logger.Log(LogLevel.Message, "                         -                        ");
+        Logger.Log(LogLevel.Message, "                **+-    .#.  .    :=:             ");
+        Logger.Log(LogLevel.Message, "        .==++=-.=**#*::*-%= =%:.=++*-             ");
+        Logger.Log(LogLevel.Message, "        .+%#***#*++*==%+*@*=#@#=++==-::...        ");
+        Logger.Log(LogLevel.Message, "           =**++***-=%*=@%%%%%%#:===++======.     ");
+        Logger.Log(LogLevel.Message, "  .:----::. .-+*+*=-*%-%%%#%%##%=-+=======-:      ");
+        Logger.Log(LogLevel.Message, "  :=+*******+---=*-=*#=%%##@###%=:+===-:.         ");
+        Logger.Log(LogLevel.Message, "    .-*****++++=---:+#=*%##@%#%%+==:.             ");
+        Logger.Log(LogLevel.Message, "   -=+=+++*****++=-::-+-*%%@@%*==.    .           ");
+        Logger.Log(LogLevel.Message, "           .::::---=-++::=*++---.::::::::..       ");
+        Logger.Log(LogLevel.Message, "         :::::::::::.@-.- . +-:#.:::::-:::::.     ");
+        Logger.Log(LogLevel.Message, "       :::-----::.  :+*+::..:++=---:..  .:----:   ");
+        Logger.Log(LogLevel.Message, "      -====-.     .++==---..    -=++==-:     :--: ");
+        Logger.Log(LogLevel.Message, "       ::.       -**++===-..      .-=====.      . ");
+        Logger.Log(LogLevel.Message, "                :#*+=====.::         :-===.       ");
+        Logger.Log(LogLevel.Message, "                +*+=====::-            .:-:       ");
+        Logger.Log(LogLevel.Message, "                +*=+==- .-::.                     ");
+        Logger.Log(LogLevel.Message, "                 .=-.   .:::.                     ");
+        Logger.Log(LogLevel.Message, "                       .--:-                      ");
+        Logger.Log(LogLevel.Message, "                         --:.                     ");
+        Logger.Log(LogLevel.Message, "                 :+=     =:::                     ");
+        Logger.Log(LogLevel.Message, "                 :=-.   =-: :                     ");
+        Logger.Log(LogLevel.Message, "                     .:+=:.                       ");
+        Logger.Log(LogLevel.Message, "                     :+=.                         ");
+        Logger.Log(LogLevel.Message, "                     .:.                          ");
     }
 
     protected virtual void InitializeLoggers()
