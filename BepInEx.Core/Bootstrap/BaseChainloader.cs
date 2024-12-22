@@ -184,7 +184,7 @@ public abstract class BaseChainloader<TPlugin>
         Logger.Log(LogLevel.Message, "                     .:+=:.                       ");
         Logger.Log(LogLevel.Message, "                     :+=.                         ");
         Logger.Log(LogLevel.Message, "                     .:.                          ");
-        Logger.Log(LogLevel.Message, "Mod 前置注入成功！");
+        Logger.Log(LogLevel.Message, "BepinEx 启动成功！");
     }
 
     protected virtual void InitializeLoggers()
