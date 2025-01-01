@@ -138,6 +138,8 @@ public abstract class BaseChainloader<TPlugin>
 
     public virtual void Initialize(string gameExePath = null)
     {
+        Console.OutputEncoding = Encoding.UTF8;
+        Console.InputEncoding = Encoding.UTF8;
         if (_initialized)
             throw new InvalidOperationException("Chainloader cannot be initialized multiple times");
 
@@ -156,35 +158,33 @@ public abstract class BaseChainloader<TPlugin>
             Directory.CreateDirectory(Paths.PatcherPluginPath);
 
         _initialized = true;
-        Console.OutputEncoding = Encoding.UTF8;
-        Console.InputEncoding = Encoding.UTF8;
-        Logger.Log(LogLevel.Message, "Chainloader initialized");
-        Logger.Log(LogLevel.Message, "                         -                        ");
-        Logger.Log(LogLevel.Message, "                **+-    .#.  .    :=:             ");
-        Logger.Log(LogLevel.Message, "        .==++=-.=**#*::*-%= =%:.=++*-             ");
-        Logger.Log(LogLevel.Message, "        .+%#***#*++*==%+*@*=#@#=++==-::...        ");
-        Logger.Log(LogLevel.Message, "           =**++***-=%*=@%%%%%%#:===++======.     ");
-        Logger.Log(LogLevel.Message, "  .:----::. .-+*+*=-*%-%%%#%%##%=-+=======-:      ");
-        Logger.Log(LogLevel.Message, "  :=+*******+---=*-=*#=%%##@###%=:+===-:.         ");
-        Logger.Log(LogLevel.Message, "    .-*****++++=---:+#=*%##@%#%%+==:.             ");
-        Logger.Log(LogLevel.Message, "   -=+=+++*****++=-::-+-*%%@@%*==.    .           ");
-        Logger.Log(LogLevel.Message, "           .::::---=-++::=*++---.::::::::..       ");
-        Logger.Log(LogLevel.Message, "         :::::::::::.@-.- . +-:#.:::::-:::::.     ");
-        Logger.Log(LogLevel.Message, "       :::-----::.  :+*+::..:++=---:..  .:----:   ");
-        Logger.Log(LogLevel.Message, "      -====-.     .++==---..    -=++==-:     :--: ");
-        Logger.Log(LogLevel.Message, "       ::.       -**++===-..      .-=====.      . ");
-        Logger.Log(LogLevel.Message, "                :#*+=====.::         :-===.       ");
-        Logger.Log(LogLevel.Message, "                +*+=====::-            .:-:       ");
-        Logger.Log(LogLevel.Message, "                +*=+==- .-::.                     ");
-        Logger.Log(LogLevel.Message, "                 .=-.   .:::.                     ");
-        Logger.Log(LogLevel.Message, "                       .--:-                      ");
-        Logger.Log(LogLevel.Message, "                         --:.                     ");
-        Logger.Log(LogLevel.Message, "                 :+=     =:::                     ");
-        Logger.Log(LogLevel.Message, "                 :=-.   =-: :                     ");
-        Logger.Log(LogLevel.Message, "                     .:+=:.                       ");
-        Logger.Log(LogLevel.Message, "                     :+=.                         ");
-        Logger.Log(LogLevel.Message, "                     .:.                          ");
-        Logger.Log(LogLevel.Message, "BepinEx 启动成功！");
+        Logger.Log(LogLevel.Info, "Chainloader initialized");
+        Logger.Log(LogLevel.Info, "                         -                        ");
+        Logger.Log(LogLevel.Info, "                **+-    .#.  .    :=:             ");
+        Logger.Log(LogLevel.Info, "        .==++=-.=**#*::*-%= =%:.=++*-             ");
+        Logger.Log(LogLevel.Info, "        .+%#***#*++*==%+*@*=#@#=++==-::...        ");
+        Logger.Log(LogLevel.Info, "           =**++***-=%*=@%%%%%%#:===++======.     ");
+        Logger.Log(LogLevel.Info, "  .:----::. .-+*+*=-*%-%%%#%%##%=-+=======-:      ");
+        Logger.Log(LogLevel.Info, "  :=+*******+---=*-=*#=%%##@###%=:+===-:.         ");
+        Logger.Log(LogLevel.Info, "    .-*****++++=---:+#=*%##@%#%%+==:.             ");
+        Logger.Log(LogLevel.Info, "   -=+=+++*****++=-::-+-*%%@@%*==.    .           ");
+        Logger.Log(LogLevel.Info, "           .::::---=-++::=*++---.::::::::..       ");
+        Logger.Log(LogLevel.Info, "         :::::::::::.@-.- . +-:#.:::::-:::::.     ");
+        Logger.Log(LogLevel.Info, "       :::-----::.  :+*+::..:++=---:..  .:----:   ");
+        Logger.Log(LogLevel.Info, "      -====-.     .++==---..    -=++==-:     :--: ");
+        Logger.Log(LogLevel.Info, "       ::.       -**++===-..      .-=====.      . ");
+        Logger.Log(LogLevel.Info, "                :#*+=====.::         :-===.       ");
+        Logger.Log(LogLevel.Info, "                +*+=====::-            .:-:       ");
+        Logger.Log(LogLevel.Info, "                +*=+==- .-::.                     ");
+        Logger.Log(LogLevel.Info, "                 .=-.   .:::.                     ");
+        Logger.Log(LogLevel.Info, "                       .--:-                      ");
+        Logger.Log(LogLevel.Info, "                         --:.                     ");
+        Logger.Log(LogLevel.Info, "                 :+=     =:::                     ");
+        Logger.Log(LogLevel.Info, "                 :=-.   =-: :                     ");
+        Logger.Log(LogLevel.Info, "                     .:+=:.                       ");
+        Logger.Log(LogLevel.Info, "                     :+=.                         ");
+        Logger.Log(LogLevel.Info, "                     .:.                          ");
+        Logger.Log(LogLevel.Info, "BepinEx 启动成功！");
     }
 
     protected virtual void InitializeLoggers()

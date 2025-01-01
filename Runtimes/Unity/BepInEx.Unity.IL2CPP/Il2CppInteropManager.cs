@@ -55,7 +55,7 @@ internal static partial class Il2CppInteropManager
 
     private static readonly ConfigEntry<string> UnityBaseLibrariesSource = ConfigFile.CoreConfig.Bind(
      "IL2CPP", "UnityBaseLibrariesSource",
-     "https://99z.top/https://unity.bepinex.dev/libraries/{VERSION}.zip",
+     "https://proxy.ehre.top/proxy/unity.bepinex.dev/libraries/{VERSION}.zip",
      new StringBuilder()
          .AppendLine("URL to the ZIP of managed Unity base libraries.")
          .AppendLine("The base libraries are used by Il2CppInterop to generate interop assemblies.")
