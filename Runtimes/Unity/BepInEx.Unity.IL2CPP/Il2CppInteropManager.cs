@@ -56,12 +56,18 @@ internal static partial class Il2CppInteropManager
 
     private static readonly ConfigEntry<string> UnityBaseLibrariesSource = ConfigFile.CoreConfig.Bind(
      "IL2CPP", "UnityBaseLibrariesSource",
-     "https://proxy.ehre.top/proxy/unity.bepinex.dev/libraries/{VERSION}.zip",
+     "https://unity.bepinex.dev/libraries/{VERSION}.zip",
      new StringBuilder()
          .AppendLine("URL to the ZIP of managed Unity base libraries.")
          .AppendLine("The base libraries are used by Il2CppInterop to generate interop assemblies.")
          .AppendLine("The URL can include {VERSION} template which will be replaced with the game's Unity engine version.")
          .ToString());
+
+    private static readonly string[] FallbackSources  = new string[]
+    {
+        "https://proxy.ehre.top/proxy/unity.bepinex.dev/libraries/{VERSION}.zip",
+        "https://99z.top/https://unity.bepinex.dev/libraries/{VERSION}.zip"
+    };
 
     private static readonly ConfigEntry<string> ConfigUnhollowerDeobfuscationRegex = ConfigFile.CoreConfig.Bind(
      "IL2CPP", "UnhollowerDeobfuscationRegex",
@@ -283,30 +289,64 @@ internal static partial class Il2CppInteropManager
         }
     }
 
-    private static void DownloadUnityAssemblies() {
+    private static void DownloadUnityAssemblies() 
+    {
         var unityVersion = UnityInfo.Version;
         var version = $"{unityVersion.Major}.{unityVersion.Minor}.{unityVersion.Build}";
-        var source = UnityBaseLibrariesSource.Value.Replace("{VERSION}", version);
-        if (string.IsNullOrEmpty(source)) return;
 
-        var uri = new Uri(source);
-        string file = Path.GetFileName(uri.AbsolutePath);
+        // 获取源链接，先尝试主源
+        var sourcesToTry = new List<string> { UnityBaseLibrariesSource.Value };
+        sourcesToTry.AddRange(FallbackSources); // 将备用源添加到尝试列表中
 
-        var baseFolder = Directory.CreateDirectory(UnityBaseLibsDirectory);
-        baseFolder.EnumerateFiles("*.dll").Do(a=>a.Delete());
-        var target = baseFolder.GetFiles(file).FirstOrDefault();
-        if (target != null) {
-            Logger.LogMessage($"Reading unity base libraries from file {source}");
-            using var fStream = target.OpenRead();
-            using var zipArchive = new ZipArchive(fStream, ZipArchiveMode.Read);
-            zipArchive.ExtractToDirectory(UnityBaseLibsDirectory);
-        } else {
-            Logger.LogMessage($"Downloading unity base libraries {source}");
-            using var httpClient = new HttpClient();
-            using var zipStream = httpClient.GetStreamAsync(source).GetAwaiter().GetResult();
-            Logger.LogMessage("Extracting downloaded unity base libraries");
-            using var zipArchive = new ZipArchive(zipStream, ZipArchiveMode.Read);
-            zipArchive.ExtractToDirectory(UnityBaseLibsDirectory);
+        foreach (var source in sourcesToTry)
+        {
+            var sourceUrl = source.Replace("{VERSION}", version);
+            if (string.IsNullOrEmpty(sourceUrl)) continue;
+
+            if (TryDownloadAndExtract(sourceUrl))
+            {
+                return; // 下载成功，退出方法
+            }
+        }
+
+        // 如果所有源都失败，则输出日志
+        Logger.LogMessage("All sources failed to download the unity base libraries.");
+    }
+
+    private static bool TryDownloadAndExtract(string source)
+    {
+        try
+        {
+            var uri = new Uri(source);
+            string file = Path.GetFileName(uri.AbsolutePath);
+
+            var baseFolder = Directory.CreateDirectory(UnityBaseLibsDirectory);
+            baseFolder.EnumerateFiles("*.dll").Do(a => a.Delete());
+            var target = baseFolder.GetFiles(file).FirstOrDefault();
+
+            if (target != null) 
+            {
+                Logger.LogMessage($"Reading unity base libraries from file {source}");
+                using var fStream = target.OpenRead();
+                using var zipArchive = new ZipArchive(fStream, ZipArchiveMode.Read);
+                zipArchive.ExtractToDirectory(UnityBaseLibsDirectory);
+            } 
+            else 
+            {
+                Logger.LogMessage($"Downloading unity base libraries {source}");
+                using var httpClient = new HttpClient();
+                using var zipStream = httpClient.GetStreamAsync(source).GetAwaiter().GetResult();
+                Logger.LogMessage("Extracting downloaded unity base libraries");
+                using var zipArchive = new ZipArchive(zipStream, ZipArchiveMode.Read);
+                zipArchive.ExtractToDirectory(UnityBaseLibsDirectory);
+            }
+
+            return true; // 下载和解压成功
+        }
+        catch (Exception ex)
+        {
+            Logger.LogMessage($"Failed to download or extract from {source}: {ex.Message}");
+            return false; // 下载或解压失败
         }
     }
 

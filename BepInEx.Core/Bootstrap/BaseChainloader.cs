@@ -159,32 +159,6 @@ public abstract class BaseChainloader<TPlugin>
 
         _initialized = true;
         Logger.Log(LogLevel.Info, "Chainloader initialized");
-        Logger.Log(LogLevel.Info, "                         -                        ");
-        Logger.Log(LogLevel.Info, "                **+-    .#.  .    :=:             ");
-        Logger.Log(LogLevel.Info, "        .==++=-.=**#*::*-%= =%:.=++*-             ");
-        Logger.Log(LogLevel.Info, "        .+%#***#*++*==%+*@*=#@#=++==-::...        ");
-        Logger.Log(LogLevel.Info, "           =**++***-=%*=@%%%%%%#:===++======.     ");
-        Logger.Log(LogLevel.Info, "  .:----::. .-+*+*=-*%-%%%#%%##%=-+=======-:      ");
-        Logger.Log(LogLevel.Info, "  :=+*******+---=*-=*#=%%##@###%=:+===-:.         ");
-        Logger.Log(LogLevel.Info, "    .-*****++++=---:+#=*%##@%#%%+==:.             ");
-        Logger.Log(LogLevel.Info, "   -=+=+++*****++=-::-+-*%%@@%*==.    .           ");
-        Logger.Log(LogLevel.Info, "           .::::---=-++::=*++---.::::::::..       ");
-        Logger.Log(LogLevel.Info, "         :::::::::::.@-.- . +-:#.:::::-:::::.     ");
-        Logger.Log(LogLevel.Info, "       :::-----::.  :+*+::..:++=---:..  .:----:   ");
-        Logger.Log(LogLevel.Info, "      -====-.     .++==---..    -=++==-:     :--: ");
-        Logger.Log(LogLevel.Info, "       ::.       -**++===-..      .-=====.      . ");
-        Logger.Log(LogLevel.Info, "                :#*+=====.::         :-===.       ");
-        Logger.Log(LogLevel.Info, "                +*+=====::-            .:-:       ");
-        Logger.Log(LogLevel.Info, "                +*=+==- .-::.                     ");
-        Logger.Log(LogLevel.Info, "                 .=-.   .:::.                     ");
-        Logger.Log(LogLevel.Info, "                       .--:-                      ");
-        Logger.Log(LogLevel.Info, "                         --:.                     ");
-        Logger.Log(LogLevel.Info, "                 :+=     =:::                     ");
-        Logger.Log(LogLevel.Info, "                 :=-.   =-: :                     ");
-        Logger.Log(LogLevel.Info, "                     .:+=:.                       ");
-        Logger.Log(LogLevel.Info, "                     :+=.                         ");
-        Logger.Log(LogLevel.Info, "                     .:.                          ");
-        Logger.Log(LogLevel.Info, "BepinEx 启动成功！");
     }
 
     protected virtual void InitializeLoggers()
